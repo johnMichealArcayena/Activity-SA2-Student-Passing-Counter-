@@ -1,0 +1,50 @@
+#include <iostream>
+
+int main() {
+    const int TOTAL_STUDENTS = 10;
+    
+    int studentCount = 0;
+    int passCount = 0;
+    int failCount = 0;
+    char grade;
+
+    std::cout << "--- Grade Processing Program ---\n\n";
+
+    while (studentCount < TOTAL_STUDENTS) {
+        bool isValid = false;
+
+        while (!isValid) {
+            std::cout << "Enter the grade for student " << (studentCount + 1) << " ('A' till 'F'): ";
+            std::cin >> grade;
+            
+            grade = toupper(grade);
+
+            if (grade >= 'A' && grade <= 'F') {
+                isValid = true;
+            } else {
+                std::cout << "Invalid input! Please enter a character from 'A' till 'F'.\n";
+            }
+        }
+
+        switch (grade) {
+            case 'A':
+            case 'B':
+            case 'C':
+            case 'D':
+                passCount++;
+                break;
+            case 'E':
+            case 'F':
+                failCount++;
+                break;
+        }
+
+        studentCount++;
+    }
+
+    std::cout << "\n--- Final Results ---\n";
+    std::cout << "Total Passing Students: " << passCount << "\n";
+    std::cout << "Total Failing Students: " << failCount << "\n";
+
+    return 0;
+}
